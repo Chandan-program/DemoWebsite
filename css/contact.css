@@ -1,0 +1,35 @@
+.contact-section {
+      padding: 60px 0;
+      background-color: #fff;
+    }
+    .contact-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+	  color: #2563eb;
+    }
+    .contact-image {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+    .contact-info {
+      text-align: center;
+      padding: 20px;
+    }
+    .contact-info i {
+      font-size: 48px;
+      margin-bottom: 10px;
+      color: #000;
+    }
+    .btn-call {
+      background-color: #0d6efd;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+    }
+	.h3-color{
+		color: #2563eb;
+	}
+	.whatsapp{
+	 size:50px;
+	}
