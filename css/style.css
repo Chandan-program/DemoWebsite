@@ -582,3 +582,27 @@
 	  background-color: #00337a !important;
 	  color: #fff !important;
 	}
+
+	/* Show dropdown on hover */
+	@media (min-width: 992px) {
+	  .navbar .dropdown:hover .dropdown-menu {
+		display: block;
+		margin-top: 0;
+	  }
+	}
+	/* Remove rounded corners from dropdown */
+	.dropdown-menu {
+	  border-radius: 0 !important;
+	  border: none;
+	  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+	  background-color: #ffffff; /* or #f8f9fa if you want very light */
+	}
+
+	/* Dark hover effect matching your theme */
+	.dropdown-menu .dropdown-item:hover,
+	.dropdown-menu .dropdown-item:focus,
+	.dropdown-menu .dropdown-item.active {
+	  background-color: #002f5e;
+	  color: #fff;
+	  border-radius: 0 !important;
+	}
