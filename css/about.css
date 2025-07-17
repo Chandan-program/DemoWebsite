@@ -1,0 +1,44 @@
+.hero {
+      background: linear-gradient(135deg, #004aad, #00b0ff);
+      color: white;
+      padding: 80px 0;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      color: #004aad;
+    }
+
+    .icon-box {
+      padding: 20px;
+      border-radius: 12px;
+      background-color: #f8f9fa;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .icon-box:hover {
+      background-color: #e9f1ff;
+      transform: translateY(-5px);
+    }
+
+    .team-card {
+      border: none;
+      transition: all 0.3s;
+    }
+
+    .team-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .footer {
+      background: #002f5e;
+      color: white;
+      padding: 40px 0;
+    }
