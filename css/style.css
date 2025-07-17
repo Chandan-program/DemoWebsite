@@ -565,3 +565,20 @@
     .form-label {
       color: #fff;
     }
+	
+	
+	.btn-custom {
+	  background-color: #004aad !important;
+	  color: #fff !important;
+	  padding: 10px 20px;
+	  border: none;
+	  border-radius: 6px;
+	  text-align: center;
+	  display: inline-block;
+	  
+	}
+
+	.btn-custom:hover {
+	  background-color: #00337a !important;
+	  color: #fff !important;
+	}
