@@ -351,7 +351,7 @@
       color: white;
       padding: 80px 20px;
       text-align: center;
-      border-radius: 15px;
+      border-radius: 0px;
       position: relative;
     }
 
@@ -517,3 +517,51 @@
   color: #ffffff; /* optional: change arrow color */
 }
 	
+/*   contact form */
+
+	.contact-section2 {
+      padding: 10px 10px;
+	  width:80%;
+    }
+
+    .form-control, .form-control:focus {
+      border-radius: 0.5rem;
+      box-shadow: none;
+    }
+
+    .btn-submit {
+      border-radius: 0.5rem;
+      background-color: #407BFF;
+      color: white;
+      padding: 10px 30px;
+      border: none;
+    }
+
+    .btn-submit:hover {
+      background-color: #265edc;
+    }
+
+    .contact-info2 i {
+      color: #ffc107;
+      margin-right: 10px;
+    }
+
+    .social-icons a {
+      margin-right: 15px;
+      color: #ccc;
+    }
+
+    .social-icons a:hover {
+      color: white;
+    }
+
+    .map-embed {
+      width: 100%;
+      height: 400px;
+      border: none;
+	  margin-top:20px;
+    }
+
+    .form-label {
+      color: #fff;
+    }
