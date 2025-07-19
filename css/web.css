@@ -31,3 +31,37 @@
     .btn-primary:hover {
       background-color: #001f3f;
     }
+	
+	@media (max-width: 768px) {
+  .web-design-bg {
+    padding: 80px 20px;
+    min-height: 300px;
+  }
+}
+.web-design-bg {
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 15px;
+  padding: 120px 30px;
+  min-height: 400px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  position: relative;
+}
+
+
+.web-design-bg::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* semi-dark overlay */
+  border-radius: 15px;
+  z-index: 1;
+}
+
+.web-design-bg > * {
+  position: relative;
+  z-index: 2;
+}
