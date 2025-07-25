@@ -179,8 +179,8 @@
 			<div class="social-icons mt-3">
 			  <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
 			  <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
-			  <a href="#" class="text-white me-3"><i class="fab fa-linkedin-in"></i></a>
-			  <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+			  <a href="https://www.linkedin.com/in/mnexiq-solutions-solutions-34b17a377/" class="text-white me-3"><i class="fab fa-linkedin-in"></i></a>
+			  <a href="https://www.instagram.com/mnexiqsolutions/" class="text-white"><i class="fab fa-instagram"></i></a>
 			</div>
 		  </div>
 
@@ -191,7 +191,7 @@
 			  <li><a href="../about/about.html" class="text-white text-decoration-none">About Us</a></li>
 			  <li><a href="#" class="text-white text-decoration-none">Careers</a></li>
 			  <li><a href="#" class="text-white text-decoration-none">Blog</a></li>
-			  <li><a href="#" class="text-white text-decoration-none">Press</a></li>
+			  <li><a href="#" class="text-white text-decoration-none">24/7 Support</a></li>
 			</ul>
 		  </div>
 
@@ -275,6 +275,169 @@
         }
 	
     </script>
+	<!-- Add this right before the closing </body> tag -->
+<div class="chat-box" id="chatBox" style="display: none;">
+    <div class="chat-header">
+        <span>🤖 MnexIQ AI Chat</span>
+        <button class="close-btn" id="closeChat">&times;</button>
+    </div>
+    <div class="chat-messages" id="chat">
+        <div class="message bot">Hi! I'm your AI assistant. How can I help you today?</div>
+    </div>
+    <div class="chat-input">
+        <input type="text" id="userInput" placeholder="Type a message..." />
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+<div class="chat-toggle" id="chatToggle">
+    <i class="fas fa-comment-dots"></i>
+</div>
+
+<script>
+// Chat functionality
+let chatOpen = false;
+
+// Toggle chat visibility
+document.getElementById('chatToggle').addEventListener('click', function() {
+    const chatBox = document.getElementById('chatBox');
+    chatOpen = !chatOpen;
+    chatBox.style.display = chatOpen ? 'flex' : 'none';
+    this.style.display = chatOpen ? 'none' : 'flex';
+    
+    // Scroll to bottom when opening
+    if (chatOpen) {
+        const chat = document.getElementById('chat');
+        chat.scrollTop = chat.scrollHeight;
+    }
+});
+
+// Close chat
+document.getElementById('closeChat').addEventListener('click', function() {
+    document.getElementById('chatBox').style.display = 'none';
+    document.getElementById('chatToggle').style.display = 'flex';
+    chatOpen = false;
+});
+
+// Service-specific responses
+function getServiceResponse(message) {
+    const lowerMsg = message.toLowerCase();
+    
+    // Graphic Design Responses
+    if (lowerMsg.includes('graphic') || lowerMsg.includes('design') || lowerMsg.includes('logo')) {
+        return [
+            "We offer professional graphic design services including logos, branding, and marketing materials.",
+            "Our designers specialize in creating visually stunning graphics that represent your brand perfectly.",
+            "For graphic design projects, we typically deliver initial concepts within 3-5 business days.",
+            "We can help with: Logo design, Business cards, Social media graphics, and Brand identity packages."
+        ];
+    }
+    
+    // Web Design Responses
+    if (lowerMsg.includes('website') || lowerMsg.includes('web design') || lowerMsg.includes('landing page')) {
+        return [
+            "We create responsive, modern websites that convert visitors into customers.",
+            "Our web design process includes UX research, wireframing, and multiple design iterations.",
+            "We specialize in WordPress, Shopify, and custom-coded websites tailored to your needs.",
+            "A typical business website takes 2-4 weeks from concept to launch."
+        ];
+    }
+    
+    // SEO Responses
+    if (lowerMsg.includes('seo') || lowerMsg.includes('ranking') || lowerMsg.includes('search engine')) {
+        return [
+            "Our SEO services include keyword research, on-page optimization, and technical SEO audits.",
+            "We typically see measurable SEO results within 3-6 months of consistent optimization.",
+            "Our SEO packages include monthly reporting on rankings, traffic, and conversions.",
+            "For immediate SEO improvements, we recommend starting with technical SEO fixes."
+        ];
+    }
+    
+    // App Development Responses
+    if (lowerMsg.includes('app') || lowerMsg.includes('application') || lowerMsg.includes('mobile')) {
+        return [
+            "We develop native iOS and Android apps using modern frameworks like Flutter and React Native.",
+            "The app development process includes prototyping, UI/UX design, and rigorous testing.",
+            "A basic MVP (Minimum Viable Product) typically takes 8-12 weeks to develop.",
+            "We can help with: Cross-platform apps, Progressive web apps (PWAs), and Enterprise applications."
+        ];
+    }
+    
+    // Web Development Responses
+    if (lowerMsg.includes('web dev') || lowerMsg.includes('development') || lowerMsg.includes('backend')) {
+        return [
+            "Our web development stack includes React, Node.js, Laravel, and modern JavaScript frameworks.",
+            "We build custom web applications with features like user authentication and payment processing.",
+            "For e-commerce solutions, we recommend Shopify Plus or custom WooCommerce development.",
+            "We specialize in: Custom CMS development, API integrations, and Database architecture."
+        ];
+    }
+    
+    // General Responses
+    return [
+        "Thanks for your message! How can I assist you with our services today?",
+        "We specialize in: Web Design, Graphic Design, SEO, App Development, and Web Development.",
+        "For immediate assistance, please call our team at +91 6207004516",
+        "You can learn more about our services on our website. What specifically interests you?",
+        "Our typical project timeline ranges from 2 weeks for simple designs to 6+ months for complex applications.",
+        "We offer free consultations for new projects. Would you like to schedule one?"
+    ];
+}
+
+// Send message function
+function sendMessage() {
+    const input = document.getElementById("userInput");
+    const chat = document.getElementById("chat");
+    const message = input.value.trim();
+
+    if (message === "") return;
+
+    // Add user message
+    const userMessage = document.createElement("div");
+    userMessage.className = "message user";
+    userMessage.innerText = message;
+    chat.appendChild(userMessage);
+
+    input.value = "";
+    chat.scrollTop = chat.scrollHeight;
+
+    // Show typing indicator
+    const typingIndicator = document.createElement("div");
+    typingIndicator.className = "message bot";
+    typingIndicator.innerHTML = '<div class="typing-indicator"><span>Typing</span><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>';
+    chat.appendChild(typingIndicator);
+    chat.scrollTop = chat.scrollHeight;
+
+    // Generate response after short delay
+    setTimeout(() => {
+        // Remove typing indicator
+        chat.removeChild(typingIndicator);
+        
+        // Get appropriate response
+        const responses = getServiceResponse(message);
+        const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+        
+        // Add AI response
+        const botMessage = document.createElement("div");
+        botMessage.className = "message bot";
+        botMessage.innerText = randomResponse;
+        chat.appendChild(botMessage);
+        chat.scrollTop = chat.scrollHeight;
+    }, 1500);
+}
+
+// Allow pressing Enter to send message
+document.getElementById('userInput').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        sendMessage();
+    }
+});
+
+// Initialize chat - show toggle button by default
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('chatToggle').style.display = 'flex';
+});
+</script>
 </body>
 </html>
 
