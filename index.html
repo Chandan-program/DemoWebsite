@@ -639,23 +639,23 @@
       <!-- Form -->
       <div class="col-md-6">
         <h4 class="fw-bold">Get in touch</h4>
-		<form id="contactForm">
-		  <div class="row mb-3">
-			<div class="col">
-			  <input type="text" class="form-control" name="name" placeholder="First name *" required>
-			</div>
-			<div class="col">
-			  <input type="email" class="form-control" name="email" placeholder="E-mail *" required>
-			</div>
-		  </div>
-		  <div class="mb-3">
-			<input type="tel" class="form-control" name="phone" placeholder="Phone *" required>
-		  </div>
-		  <div class="mb-3">
-			<textarea class="form-control" name="message" rows="4" placeholder="Your Message *" required></textarea>
-		  </div>
-		  <button type="submit" class="btn-submit">SUBMIT</button>
-		</form>
+			<form id="contact-form" class="mt-4">
+			  <div class="row mb-3">
+				<div class="col">
+				  <input type="text" name="from_name" class="form-control" placeholder="First name *" required>
+				</div>
+				<div class="col">
+				  <input type="email" name="reply_to" class="form-control" placeholder="E-mail *" required>
+				</div>
+			  </div>
+			  <div class="mb-3">
+				<input type="tel" name="phone" class="form-control" placeholder="Phone *" required>
+			  </div>
+			  <div class="mb-3">
+				<textarea name="message" class="form-control" rows="4" placeholder="Your Message *" required></textarea>
+			  </div>
+			  <button type="submit" class="btn-submit">SUBMIT</button>
+			</form>
 		  </div>
 		</div>
 	  </div>
@@ -976,25 +976,41 @@ document.addEventListener('DOMContentLoaded', function() {
 </body>
 </html>
 
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
-  document.getElementById("contactForm").addEventListener("submit", async function (e) {
-    e.preventDefault();
+  (function() {
+    emailjs.init("OLnZssxH2Z7rvPu1J"); // Your Public Key
+  })();
+</script>
+<script>
+  document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault(); // prevent default form submission
 
-    const formData = {
-      name: this.name.value,
-      email: this.email.value,
-      phone: this.phone.value,
-      message: this.message.value
-    };
+    emailjs.sendForm('service_34tzr6e', 'template_26xugf8', this)
+      .then(function(response) {
+        // Show success message
+        const successDiv = document.createElement('div');
+        successDiv.textContent = "✅ Message sent successfully! Reloading...";
+        successDiv.style.color = 'green';
+        successDiv.style.marginTop = '15px';
+        successDiv.style.fontWeight = 'bold';
+        document.getElementById('contact-form').appendChild(successDiv);
 
-    const response = await fetch("http://localhost:3000/send-email", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData)
-    });
+        // Reload the page after 3 seconds
+        setTimeout(() => {
+          location.reload();
+        }, 3000); // 3000ms = 3 seconds
+      }, function(error) {
+        // Show error message
+        const errorDiv = document.createElement('div');
+        errorDiv.textContent = "❌ Failed to send message. Please try again.";
+        errorDiv.style.color = 'red';
+        errorDiv.style.marginTop = '15px';
+        errorDiv.style.fontWeight = 'bold';
+        document.getElementById('contact-form').appendChild(errorDiv);
 
-    const result = await response.json();
-    alert(result.message);
+        console.error('EmailJS Error:', error);
+      });
   });
 </script>
 
